@@ -1,0 +1,19 @@
+error: is_digit called with decimal radix
+  --> $DIR/is_digit_simplify.rs:13:11
+   |
+LL |         c.is_digit(10),
+   |           ^^^^^^^^^^^^
+   |
+   = note: `-D clippy::is-digit-simplify` implied by `-D warnings`
+   = help: consider using is_ascii_digit
+
+error: is_digit called with hexadecimal radix
+  --> $DIR/is_digit_simplify.rs:14:11
+   |
+LL |         c.is_digit(16)
+   |           ^^^^^^^^^^^^
+   |
+   = help: consider using is_ascii_hexdigit
+
+error: aborting due to 2 previous errors
+

@@ -27,11 +27,11 @@ path = "src/main.rs"
 name = "clippy-driver"
 path = "src/driver.rs"
 
-[target.'cfg(NOT_A_PLATFORM)'.dependencies]
-rustc_driver = { path = "/home/benji/pull-requests/rust/compiler/rustc_driver" }
-rustc_errors = { path = "/home/benji/pull-requests/rust/compiler/rustc_errors" }
-rustc_interface = { path = "/home/benji/pull-requests/rust/compiler/rustc_interface" }
-rustc_middle = { path = "/home/benji/pull-requests/rust/compiler/rustc_middle" }
+# [target.'cfg(NOT_A_PLATFORM)'.dependencies]
+# rustc_driver = { path = "/home/benji/pull-requests/rust/compiler/rustc_driver" }
+# rustc_errors = { path = "/home/benji/pull-requests/rust/compiler/rustc_errors" }
+# rustc_interface = { path = "/home/benji/pull-requests/rust/compiler/rustc_interface" }
+# rustc_middle = { path = "/home/benji/pull-requests/rust/compiler/rustc_middle" }
 
 [dependencies]
 # begin automatic update

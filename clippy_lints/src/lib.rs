@@ -1188,6 +1188,7 @@ pub fn register_plugins(store: &mut rustc_lint::LintStore, sess: &Session, conf:
     store.register_late_pass(|| box option_if_let_else::OptionIfLetElse);
     store.register_late_pass(|| box future_not_send::FutureNotSend);
     store.register_late_pass(|| box if_let_mutex::IfLetMutex);
+    store.register_late_pass(|| box is_digit_simplify::IsDigitSimplify);
     store.register_late_pass(|| box mut_mutex_lock::MutMutexLock);
     store.register_late_pass(|| box match_on_vec_items::MatchOnVecItems);
     store.register_late_pass(|| box manual_async_fn::ManualAsyncFn);
