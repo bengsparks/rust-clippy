@@ -295,6 +295,7 @@ mod ptr_eq;
 mod ptr_offset_with_cast;
 mod question_mark;
 mod ranges;
+mod recommend_deriving;
 mod redundant_clone;
 mod redundant_closure_call;
 mod redundant_else;
@@ -840,6 +841,7 @@ pub fn register_plugins(store: &mut rustc_lint::LintStore, sess: &Session, conf:
         &ranges::RANGE_PLUS_ONE,
         &ranges::RANGE_ZIP_WITH_LEN,
         &ranges::REVERSED_EMPTY_RANGES,
+        &recommend_deriving::RECOMMEND_DERIVING,
         &redundant_clone::REDUNDANT_CLONE,
         &redundant_closure_call::REDUNDANT_CLOSURE_CALL,
         &redundant_else::REDUNDANT_ELSE,
@@ -1026,6 +1028,7 @@ pub fn register_plugins(store: &mut rustc_lint::LintStore, sess: &Session, conf:
     store.register_late_pass(move || box use_self::UseSelf::new(msrv));
     store.register_late_pass(move || box missing_const_for_fn::MissingConstForFn::new(msrv));
     store.register_late_pass(move || box needless_question_mark::NeedlessQuestionMark::new(msrv));
+    store.register_late_pass(move || box recommend_deriving::RecommendDeriving::new(msrv));
 
     store.register_late_pass(|| box size_of_in_element_count::SizeOfInElementCount);
     store.register_late_pass(|| box map_clone::MapClone);
@@ -1581,6 +1584,7 @@ pub fn register_plugins(store: &mut rustc_lint::LintStore, sess: &Session, conf:
         LintId::of(&ranges::MANUAL_RANGE_CONTAINS),
         LintId::of(&ranges::RANGE_ZIP_WITH_LEN),
         LintId::of(&ranges::REVERSED_EMPTY_RANGES),
+        LintId::of(&recommend_deriving::RECOMMEND_DERIVING),
         LintId::of(&redundant_clone::REDUNDANT_CLONE),
         LintId::of(&redundant_closure_call::REDUNDANT_CLOSURE_CALL),
         LintId::of(&redundant_field_names::REDUNDANT_FIELD_NAMES),
@@ -1749,6 +1753,7 @@ pub fn register_plugins(store: &mut rustc_lint::LintStore, sess: &Session, conf:
         LintId::of(&ptr_eq::PTR_EQ),
         LintId::of(&question_mark::QUESTION_MARK),
         LintId::of(&ranges::MANUAL_RANGE_CONTAINS),
+        LintId::of(&recommend_deriving::RECOMMEND_DERIVING),
         LintId::of(&redundant_field_names::REDUNDANT_FIELD_NAMES),
         LintId::of(&redundant_static_lifetimes::REDUNDANT_STATIC_LIFETIMES),
         LintId::of(&regex::TRIVIAL_REGEX),
